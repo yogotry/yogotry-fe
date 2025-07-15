@@ -1,5 +1,7 @@
+import styles from './page.module.scss';
+
 export default function HomePage() {
   return (
-    <div>요거트</div>
+    <div className={styles.text}>요거트</div>
   );
 }
