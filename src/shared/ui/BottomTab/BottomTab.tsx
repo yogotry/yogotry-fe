@@ -1,7 +1,40 @@
+"use client"
+
+import Image from "next/image";
+import Link from "next/link";
+import {usePathname} from 'next/navigation';
+
 import styles from './BottomTab.module.scss';
 
+// tab 개수 변경 시 CSS의 --tab-item-count 변경 필요
+const tabs = [
+  {name: '그래프', href: '/graph', icon: 'graph-white.svg', activeIcon: 'graph-black.svg'},
+  {name: '탐색', href: '/explore', icon: 'compass-white.svg', activeIcon: 'compass-black.svg'},
+  {name: '서랍', href: '/archive', icon: 'bookmark-white.svg', activeIcon: 'bookmark-black.svg'},
+]
+
 export function BottomTab() {
+  const pathname = usePathname()
+  // 현재 활성화된 탭
+  const activeIndex = tabs.findIndex(tab => pathname.startsWith(tab.href))
+
+  // 인디케이터 X 좌표 계산
+  const indicatorX = `calc(${activeIndex} * var(--tab-item-width) + var(--tab-spacing) * ${activeIndex})`
+
   return (
-    <div>바텀 탭</div>
+    <nav className={styles.tabBar}>
+      <div className={styles.indicator} style={{transform: `translateX(${indicatorX})`}}/>
+      {tabs.map((tab, index) => {
+        const isActive = activeIndex === index
+        return <Link
+          href={tab.href}
+          key={tab.name}
+          className={`${styles.tabBarItem} ${isActive ? styles.active : ""}`}
+        >
+          <Image src={`/icons/${isActive ? tab.activeIcon : tab.icon}`} alt={tab.name} width={32} height={32}/>
+          {tab.name}
+        </Link>
+      })}
+    </nav>
   )
 }

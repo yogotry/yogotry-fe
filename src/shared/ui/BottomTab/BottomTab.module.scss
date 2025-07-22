@@ -1,0 +1,58 @@
+.tabBar {
+  --tab-item-width: 75px;
+  --tab-item-count: 3;
+  --tab-bar-height: 88px;
+  --tab-padding: 16px;
+  --tab-padding-y: 8px;
+  --tab-spacing: 8px;
+
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  transform: translateX(-50%);
+  padding: var(--tab-padding-y) var(--tab-padding);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: var(--tab-spacing);
+
+  width: calc(var(--tab-item-width) * var(--tab-item-count) + var(--tab-padding) * 2 + var(--tab-spacing) * (var(--tab-item-count) - 1 ));
+  height: var(--tab-bar-height);
+  border-radius: 50px;
+  background-color: var(--box-background);
+
+  .indicator {
+    position: absolute;
+    top: var(--tab-padding-y);
+    left: var(--tab-padding);
+
+    width: var(--tab-item-width);
+    height: calc(var(--tab-bar-height) - var(--tab-padding-y) * 2);
+
+    border-radius: 100%;
+    background-color: var(--foreground);
+    transition: transform 0.3s ease;
+    z-index: 0;
+  }
+}
+
+.tabBarItem {
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  text-align: center;
+  padding: 12px 0;
+  color: var(--foreground);
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  &.active {
+    color: var(--background)
+  }
+}

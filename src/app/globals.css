@@ -1,6 +1,8 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+
+  --box-background: #2a2a2a;
 }
 
 html,

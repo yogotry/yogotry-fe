@@ -1,5 +1,5 @@
 import {redirect} from "next/navigation";
 
 export default function HomePage() {
-  return redirect('/node');
+  return redirect('/graph');
 }
