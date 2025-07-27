@@ -8,9 +8,9 @@ import styles from "./layout.module.scss";
 export default function RootLayout({children}: Readonly<{ children: ReactNode }>) {
   return (
     <div className={styles.layout}>
-      <div className={styles.header}>
+      <header className={styles.header}>
         <Header/>
-      </div>
+      </header>
 
       <main className={styles.layoutContent}>{children}</main>
 
