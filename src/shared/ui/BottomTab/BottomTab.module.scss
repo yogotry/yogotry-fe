@@ -1,24 +1,25 @@
 .tabBar {
-  --tab-item-width: 75px;
+  --tab-item-width: 50px;
+  --tab-active-width: 100px;
   --tab-item-count: 3;
-  --tab-bar-height: 88px;
-  --tab-padding: 16px;
+  --tab-bar-height: 60px;
+  --tab-padding: 8px;
   --tab-padding-y: 8px;
   --tab-spacing: 8px;
 
   position: fixed;
   bottom: 80px;
-  left: 0;
-  right: 0;
+  left: 50%;
   transform: translateX(-50%);
   padding: var(--tab-padding-y) var(--tab-padding);
 
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   gap: var(--tab-spacing);
 
-  width: calc(var(--tab-item-width) * var(--tab-item-count) + var(--tab-padding) * 2 + var(--tab-spacing) * (var(--tab-item-count) - 1 ));
+  // 동적 너비 계산: 비활성 탭 2개 + 활성 탭 1개 + 패딩 + 간격
+  width: calc(var(--tab-item-width) * 2 + var(--tab-active-width) + var(--tab-padding) * 2 + var(--tab-spacing) * 2);
   height: var(--tab-bar-height);
   border-radius: 50px;
   background-color: var(--box-background);
@@ -28,10 +29,10 @@
     top: var(--tab-padding-y);
     left: var(--tab-padding);
 
-    width: var(--tab-item-width);
+    width: var(--tab-active-width);
     height: calc(var(--tab-bar-height) - var(--tab-padding-y) * 2);
 
-    border-radius: 100%;
+    border-radius: 100px;
     background-color: var(--foreground);
     transition: transform 0.3s ease;
     z-index: 0;
@@ -41,18 +42,28 @@
 .tabBarItem {
   position: relative;
   z-index: 1;
-  width: 80px;
+  width: var(--tab-item-width);
   text-align: center;
-  padding: 12px 0;
+  padding: 12px 8px;
   color: var(--foreground);
   cursor: pointer;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 8px;
+
+  font-size: small;
+  transition: width 0.3s ease;
 
   &.active {
-    color: var(--background)
+    color: var(--background);
+    width: var(--tab-active-width);
+  }
+
+  .tabName {
+    white-space: nowrap;
+    font-weight: 500;
   }
 }

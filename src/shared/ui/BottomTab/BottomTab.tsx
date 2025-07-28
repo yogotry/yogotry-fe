@@ -8,9 +8,9 @@ import styles from './BottomTab.module.scss';
 
 // tab 개수 변경 시 CSS의 --tab-item-count 변경 필요
 const tabs = [
-  {name: '그래프', href: '/graph', icon: 'graph-white.svg', activeIcon: 'graph-black.svg'},
-  {name: '탐색', href: '/explore', icon: 'compass-white.svg', activeIcon: 'compass-black.svg'},
-  {name: '서랍', href: '/archive', icon: 'bookmark-white.svg', activeIcon: 'bookmark-black.svg'},
+  {name: '그래프', href: '/graph', icon: 'graph-gray.svg', activeIcon: 'graph-black.svg'},
+  {name: '탐색', href: '/explore', icon: 'compass-gray.svg', activeIcon: 'compass-black.svg'},
+  {name: '아카이브', href: '/archive', icon: 'folder-gray.svg', activeIcon: 'folder-black.svg'},
 ]
 
 export function BottomTab() {
@@ -31,8 +31,8 @@ export function BottomTab() {
           key={tab.name}
           className={`${styles.tabBarItem} ${isActive ? styles.active : ""}`}
         >
-          <Image src={`/icons/${isActive ? tab.activeIcon : tab.icon}`} alt={tab.name} width={32} height={32}/>
-          {tab.name}
+          <Image src={`/icons/${isActive ? tab.activeIcon : tab.icon}`} alt={tab.name} width={28} height={28}/>
+          {isActive && <span className={styles.tabName}>{tab.name}</span>}
         </Link>
       })}
     </nav>
