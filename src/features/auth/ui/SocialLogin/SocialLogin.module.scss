@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 260px;
+
+  border-radius: 12px;
+
+  padding: 10px 16px;
+
+  svg {
+    font-size: 20px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* 아이콘 전용 버튼 */
+.iconOnly {
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  justify-content: center;
+
+  span,
+  svg + span {
+    display: none;
+  }
+}
+
+/* 로딩 상태 */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}

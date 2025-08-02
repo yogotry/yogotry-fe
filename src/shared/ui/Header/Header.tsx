@@ -1,10 +1,10 @@
 "use client"
 
+import {UserRound} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from './Header.module.scss';
-import Link from "next/link";
-import {UserRound} from "lucide-react";
 
 export function Header() {
   return (
