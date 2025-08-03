@@ -19,6 +19,7 @@ export async function fetcher(
   const url = typeof input === 'string' ? baseURL + input : input;
 
   const finalHeaders: HeadersInit = {
+    'Content-Type': 'application/json',
     ...headers,
     ...(isServer && req
       ? { cookie: req.headers.get('cookie') || '' }
