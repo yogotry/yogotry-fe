@@ -15,6 +15,7 @@ export default function Page() {
   useEffect(() => {
     const login = async () => {
       const response = await fetcher('/auth/login/google', {
+        method: 'POST',
         body: JSON.stringify({
           code
         }),
