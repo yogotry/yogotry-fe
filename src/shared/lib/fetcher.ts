@@ -15,7 +15,7 @@ export async function fetcher(
 
   const isServer = typeof window === 'undefined';
 
-  const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
+  const baseURL = `${process.env.NEXT_PUBLIC_API_URL}`;
   const url = typeof input === 'string' ? baseURL + input : input;
 
   const finalHeaders: HeadersInit = {
