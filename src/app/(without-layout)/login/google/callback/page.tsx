@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import {fetcher} from "@/shared/lib/fetcher";
 import {LoadingIndicator} from "@/shared/ui/LoadingIndicator";
 
+import styles from './page.module.scss';
+
 export default function Page() {
   const router = useRouter();
   const searchParams = useSearchParams()
@@ -32,5 +34,9 @@ export default function Page() {
     }
   }, [code])
 
-  return <LoadingIndicator />
+  return (
+    <div className={styles.spinnerWrapper}>
+      <LoadingIndicator />
+    </div>
+  )
 }
