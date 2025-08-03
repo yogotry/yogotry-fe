@@ -13,11 +13,16 @@ type Props = {
 };
 
 export const GoogleLoginButton = ({ iconOnly = false, isLoading = false }: Props) => {
-    const handleClick = () => {
-        if (isLoading) return;
-        const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI;
-        window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/oauth/google?redirect_uri=${redirectUri}`;
-    };
+    const redirectToGoogle = () => {
+        const params = new URLSearchParams({
+            client_id: `${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`,
+            redirect_uri: `${process.env.NEXT_PUBLIC_FE_URL}/login/google/callback`,
+            response_type: 'code',
+            scope: 'openid email profile',
+        })
+
+        window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`
+    }
 
     return (
         <Button
@@ -27,7 +32,7 @@ export const GoogleLoginButton = ({ iconOnly = false, isLoading = false }: Props
                 isLoading && styles.loading
             )}
             variant="outline"
-            onClick={handleClick}
+            onClick={redirectToGoogle}
             disabled={isLoading}
         >
             <Image src="/icons/google-logo.svg" alt="Google Login" width={24} height={24} />
